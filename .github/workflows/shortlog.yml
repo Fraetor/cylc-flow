@@ -10,10 +10,14 @@ on:
   schedule:
     - cron: '37 06 * * 1' # 06:37, Monday
 
+permissions: {}
+
 jobs:
   test:
     runs-on: 'ubuntu-latest'
     timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v7
