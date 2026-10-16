@@ -1,4 +1,4 @@
-name: check contributor list
+name: Check contributor list
 
 on:
   workflow_dispatch:
