@@ -3,11 +3,15 @@ updates:
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     labels:
-      - 'dependencies'
-      - 'infrastructure'
+      - "dependencies"
+      - "infrastructure"
+    groups:
+      actions-dependencies:
+        update-types: ["major", "minor", "patch"]
