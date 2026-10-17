@@ -1,6 +1,6 @@
-name: Build
+name: Test building package
 
-# build the project whenever the configuration is changed
+# Build the project whenever the configuration is changed.
 
 on:
   workflow_dispatch:
@@ -16,40 +16,45 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions: {}
+
 defaults:
   run:
     shell: bash -leo pipefail {0}
 
-env:
-  FORCE_COLOR: 2
-  PIP_PROGRESS_BAR: off
-
 jobs:
-  test:
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 10
+  test-build:
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       matrix:
         os: ['ubuntu-latest', 'macos-latest']
-        python: ['3.12', '3']
+        python: ['3.12', '3.x']
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    env:
+      FORCE_COLOR: 1
+      PIP_PROGRESS_BAR: off
     steps:
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Setup Python
         uses: mamba-org/setup-micromamba@v3
         with:
           cache-environment: true
-          post-cleanup: 'all'
           environment-name: cylc-build
           create-args: >-
             python=${{ matrix.python }}
+            pip
 
-      - name: Build
+      - name: Build package
         uses: Fraetor/release-actions/build-python-package@ci_improvements
 
-      - name: Inspect
+      - name: Ensure package contains expected files
         run: |
           unzip -l dist/*.whl | tee files
           grep -E 'cylc_flow.*.dist-info/.*COPYING' files
