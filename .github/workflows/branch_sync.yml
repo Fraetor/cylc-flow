@@ -1,4 +1,4 @@
-name: Sync PR
+name: Create branch sync PR
 
 on:
   push:
