@@ -134,7 +134,7 @@ jobs:
           echo "GLOBAL_CFG_PATH=${CONF_PATH}/global.cylc" >> "$GITHUB_ENV"
 
       - name: Patch DNS
-        uses: cylc/release-actions/patch-dns@v1
+        uses: Fraetor/release-actions/patch-dns@ci_improvements
 
       - name: Add localhost entries to global config
         if: startsWith(runner.os, 'macos')
@@ -189,7 +189,7 @@ jobs:
           ssh -vv _remote_background_indep_poll hostname
 
       - name: Configure git  # Needed by the odd test
-        uses: cylc/release-actions/configure-git@v1
+        uses: Fraetor/release-actions/configure-git@ci_improvements
 
       # Useful debug info:
       - name: Pip list

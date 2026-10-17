@@ -47,7 +47,7 @@ jobs:
             python=${{ matrix.python }}
 
       - name: Build
-        uses: cylc/release-actions/build-python-package@v1
+        uses: Fraetor/release-actions/build-python-package@ci_improvements
 
       - name: Inspect
         run: |

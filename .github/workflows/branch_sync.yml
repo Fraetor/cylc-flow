@@ -17,7 +17,7 @@ permissions: {}
 jobs:
   sync:
     if: github.repository_owner == 'cylc' || github.event_name != 'schedule'
-    uses: cylc/release-actions/.github/workflows/branch-sync.yml@v1
+    uses: Fraetor/release-actions/.github/workflows/branch-sync.yml@ci_improvements
     with:
       head_branch: ${{ inputs.head_branch }}
     permissions:

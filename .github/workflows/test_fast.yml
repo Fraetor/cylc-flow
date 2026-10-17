@@ -62,10 +62,10 @@ jobs:
           pip install -e ."[all]"
 
       - name: Patch DNS
-        uses: cylc/release-actions/patch-dns@v1
+        uses: Fraetor/release-actions/patch-dns@ci_improvements
 
       - name: Configure git  # Needed by the odd test
-        uses: cylc/release-actions/configure-git@v1
+        uses: Fraetor/release-actions/configure-git@ci_improvements
 
       # Useful debug info:
       - name: Pip list
@@ -150,7 +150,7 @@ jobs:
           run: mypy
 
         - name: Towncrier - draft changelog
-          uses: cylc/release-actions/towncrier-draft@v1
+          uses: Fraetor/release-actions/towncrier-draft@ci_improvements
 
   linkcheck:
     needs: lint

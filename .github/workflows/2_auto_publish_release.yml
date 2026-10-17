@@ -43,10 +43,10 @@ jobs:
         python-version: '3.x'
 
     - name: Get the version number
-      uses: cylc/release-actions/stage-2/get-version-from-pr@v1
+      uses: Fraetor/release-actions/stage-2/get-version-from-pr@ci_improvements
 
     - name: Build
-      uses: cylc/release-actions/build-python-package@v1
+      uses: Fraetor/release-actions/build-python-package@ci_improvements
 
     - name: Publish distribution to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
@@ -58,7 +58,7 @@ jobs:
 
     - name: Publish GitHub release
       id: create-release
-      uses: cylc/release-actions/create-release@v1
+      uses: Fraetor/release-actions/create-release@ci_improvements
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
@@ -75,14 +75,14 @@ jobs:
 
     - name: Comment on the release PR with the results & next steps
       if: always()
-      uses: cylc/release-actions/stage-2/comment-on-pr@v1
+      uses: Fraetor/release-actions/stage-2/comment-on-pr@ci_improvements
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         release-url: ${{ steps.create-release.outputs.html_url }}
 
     - name: Bump dev version
-      uses: cylc/release-actions/stage-2/bump-dev-version@v1
+      uses: Fraetor/release-actions/stage-2/bump-dev-version@ci_improvements
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:

@@ -26,4 +26,4 @@ jobs:
           persist-credentials: false
 
       - name: Check CONTRIBUTING.md
-        uses: cylc/release-actions/check-shortlog@v1
+        uses: Fraetor/release-actions/check-shortlog@ci_improvements
