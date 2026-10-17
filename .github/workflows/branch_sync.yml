@@ -12,10 +12,14 @@ on:
         description: Branch to merge into master
         required: true
 
+permissions: {}
+
 jobs:
   sync:
     if: github.repository_owner == 'cylc' || github.event_name != 'schedule'
     uses: cylc/release-actions/.github/workflows/branch-sync.yml@v1
     with:
       head_branch: ${{ inputs.head_branch }}
-    secrets: inherit
+    permissions:
+      contents: write
+      pull_requests: write
