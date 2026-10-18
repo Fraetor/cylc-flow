@@ -9,8 +9,9 @@ on:
   workflow_dispatch:
     inputs:
       head_branch:
-        description: Branch to merge into master
+        description: Branch containing changes to create the sync PR from.
         required: true
+        type: string
 
 permissions: {}
 cache-mode: none
