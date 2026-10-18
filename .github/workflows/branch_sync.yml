@@ -22,4 +22,4 @@ jobs:
       head_branch: ${{ inputs.head_branch }}
     permissions:
       contents: write
-      pull_requests: write
+      pull-requests: write
