@@ -18,6 +18,6 @@ permissions: {}
 
 jobs:
   check-shortlog:
-    uses: Fraetor/release-actions/.github/workflows/branch-sync.yml@ci_improvements
+    uses: Fraetor/release-actions/.github/workflows/check-shortlog.yml@ci_improvements
     permissions:
       contents: read
